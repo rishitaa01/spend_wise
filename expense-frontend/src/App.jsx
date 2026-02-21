@@ -35,7 +35,7 @@ function App() {
   // ================= FETCH FUNCTIONS =================
 
   const fetchExpenses = async () => {
-    const res = await axios.get("http://127.0.0.1:5000/expenses");
+    const res = await axios.get("https://spend-wise-two-kappa.vercel.app//expenses");
 
     const normalized = res.data.map(item => ({
       Date: item.Date || item.date,
@@ -48,12 +48,12 @@ function App() {
   };
 
   const fetchTotal = async () => {
-    const res = await axios.get("http://127.0.0.1:5000/total");
+    const res = await axios.get("https://spend-wise-two-kappa.vercel.app//total");
     setTotal(res.data.total);
   };
 
   const fetchMonthlyTotals = async () => {
-    const res = await axios.get("http://127.0.0.1:5000/monthly-totals");
+    const res = await axios.get("https://spend-wise-two-kappa.vercel.app//monthly-totals");
     setMonthlyTotals(res.data);
   };
 
@@ -69,7 +69,7 @@ function App() {
     if (!summaryMonth) return;
 
     const res = await axios.get(
-      `http://127.0.0.1:5000/monthly-summary/${summaryMonth}`
+      `https://spend-wise-two-kappa.vercel.app//monthly-summary/${summaryMonth}`
     );
 
     setMonthlySummary(res.data);
@@ -80,7 +80,7 @@ function App() {
   const setBudget = async () => {
     if (!budgetMonth || !budgetAmount) return;
 
-    await axios.post("http://127.0.0.1:5000/set-budget", {
+    await axios.post("https://spend-wise-two-kappa.vercel.app//set-budget", {
       month: budgetMonth,
       budget: budgetAmount
     });
@@ -92,7 +92,7 @@ function App() {
     if (!budgetMonth) return;
 
     const res = await axios.get(
-      `http://127.0.0.1:5000/budget-status/${budgetMonth}`
+      `https://spend-wise-two-kappa.vercel.app//budget-status/${budgetMonth}`
     );
 
     setBudgetStatus(res.data);
@@ -120,7 +120,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post("http://127.0.0.1:5000/add-expense", formData);
+    await axios.post("https://spend-wise-two-kappa.vercel.app//add-expense", formData);
 
     fetchExpenses();
     fetchTotal();
@@ -276,7 +276,7 @@ function App() {
       <div className="card">
         <h2>Category Chart</h2>
         <img
-          src="http://127.0.0.1:5000/chart"
+          src="https://spend-wise-two-kappa.vercel.app//chart"
           alt="Category Chart"
           style={{ width: "100%", maxWidth: "700px" }}
         />
@@ -286,7 +286,7 @@ function App() {
       <div className="card">
         <h2>Monthly Comparison</h2>
         <img
-          src="http://127.0.0.1:5000/line-chart"
+          src="https://spend-wise-two-kappa.vercel.app//line-chart"
           alt="Line Chart"
           style={{ width: "100%", maxWidth: "700px" }}
         />
@@ -316,7 +316,7 @@ function App() {
 
         {selectedMonth && selectedCategory ? (
           <img
-            src={`http://127.0.0.1:5000/pie-chart/${selectedMonth}/${encodeURIComponent(selectedCategory)}`}
+            src={`https://spend-wise-two-kappa.vercel.app//pie-chart/${selectedMonth}/${encodeURIComponent(selectedCategory)}`}
             alt="Pie Chart"
             style={{ width: "100%", maxWidth: "600px" }}
           />
