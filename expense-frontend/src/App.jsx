@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API = "https://spendwise-backend.onrender.com";
+
 function App() {
 
   const categories = {
